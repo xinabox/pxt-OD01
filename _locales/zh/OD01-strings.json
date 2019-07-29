@@ -1,0 +1,16 @@
+{
+    "OD01.DISPLAY_ONOFF.DISPLAY_ON|block": "开",
+    "OD01.DISPLAY_ONOFF.DISPLAY_OFF|block": "关",
+    "OD01.pixel|block": "画点 x %x|y %y|颜色 %color",
+    "OD01.String|block": "显示文字 %s|在列 %x|行 %y|颜色 %color",
+    "OD01.Number|block": "显示数字 %num|在列 %x|行 %y|颜色 %color",
+    "OD01.printString|block": "打印 %s|颜色 %color|新行 %newline",
+    "OD01.printNumber|block": "打印数字 %num|颜色 %color|新行 %newline",
+    "OD01.hline|block": "绘制水平线在 x %x|y %y|长度 %len|颜色 %color",
+    "OD01.vline|block": "绘制垂直线在 x %x|y %y|长度 %len|颜色 %color",
+    "OD01.rect|block": "绘制矩形在 x1 %x1|y1 %y1|x2 %x2|y2 %y2|颜色 %color",
+    "OD01.invert|block": "反显模式 %d",
+    "OD01.clear|block": "清除屏幕",
+    "OD01.display|block": "显示 %d",
+    "OD01.init|block": "初始化"
+}

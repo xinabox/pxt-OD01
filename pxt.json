@@ -1,0 +1,18 @@
+{
+    "name": "OD01",
+    "version": "1.0.0",
+    "description": "XinaBox OD01 Package for micro:bit. OLED 128x64 display.",
+    "license": "MIT",
+    "dependencies": {
+        "core": "*"
+    },
+    "files": [
+        "README.md",
+        "od01.ts",
+        "_locales/zh/OD01-strings.json"
+    ],
+    "testFiles": [
+        "test.ts"
+    ],
+    "public": true
+}
