@@ -158,7 +158,7 @@ namespace OD01 {
     //% s.defl="string"
     //% color.max=1 color.min=0 color.defl=1
     //% newline.defl=true
-    //% weight=80 blockGap=8 inlineInputMode=inline
+    //% weight=10 blockGap=8 inlineInputMode=inline
     export function printString(s: string, color: number, newline: boolean = true) {
         for (let n = 0; n < s.length; n++) {
             char(s.charAt(n), _cx, _cy, color)
@@ -179,7 +179,7 @@ namespace OD01 {
     //% s.defl="0"
     //% color.max=1 color.min=0 color.defl=1
     //% newline.defl=true
-    //% weight=80 blockGap=8 inlineInputMode=inline
+    //% weight=15 blockGap=8 inlineInputMode=inline
     export function printNumber(num: number, color: number, newline: boolean = true) {
         printString(num.toString(), color, newline)
     }
