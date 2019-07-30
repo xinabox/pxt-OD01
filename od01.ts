@@ -158,7 +158,7 @@ namespace OD01 {
     //% s.defl="string"
     //% color.max=1 color.min=0 color.defl=1
     //% newline.defl=true
-    //% weight=10 blockGap=8 inlineInputMode=inline
+    //% weight=88 blockGap=8 inlineInputMode=inline
     export function printString(s: string, color: number, newline: boolean = true) {
         for (let n = 0; n < s.length; n++) {
             char(s.charAt(n), _cx, _cy, color)
@@ -179,7 +179,7 @@ namespace OD01 {
     //% s.defl="0"
     //% color.max=1 color.min=0 color.defl=1
     //% newline.defl=true
-    //% weight=15 blockGap=8 inlineInputMode=inline
+    //% weight=86 blockGap=8 inlineInputMode=inline
     export function printNumber(num: number, color: number, newline: boolean = true) {
         printString(num.toString(), color, newline)
     }
@@ -259,7 +259,7 @@ namespace OD01 {
      * clear screen
      */
     //% blockId="OLED12864_I2C_CLEAR" block="Clear screen"
-    //% weight=30 blockGap=8
+    //% weight=85 blockGap=8
     export function clear() {
         _cx = _cy = 0
         _screen.fill(0)
@@ -272,7 +272,7 @@ namespace OD01 {
      */
     //% blockId="OLED12864_I2C_ON" block="Display %on"
     //% on.defl=1
-    //% weight=62 blockGap=8
+    //% weight=90 blockGap=8
     export function display(on: OD01.DISPLAY_ONOFF) {
         let d = (on == OD01.DISPLAY_ONOFF.DISPLAY_ON) ? 0xAF : 0xAE;
         cmd1(d)
@@ -281,8 +281,8 @@ namespace OD01 {
     /**
      * OLED initialize
      */
-    //% blockId="OLED12864_I2C_init" block="Initial OLED"
-    //% weight=10 blockGap=8
+    //% blockId="OLED12864_I2C_init" block="initialize OLED"
+    //% weight=99 blockGap=8
     export function init() {
         cmd1(0xAE)       // SSD1306_DISPLAYOFF
         cmd1(0xA4)       // SSD1306_DISPLAYALLON_RESUME
