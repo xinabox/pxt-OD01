@@ -76,7 +76,7 @@ namespace OD01 {
     }
 
     /**
-     * set pixel in OLED
+     * set a single pixel to be on (color = 1) or off (color = 0)
      */
     //% blockId="OLED12864_I2C_PIXEL" block="set pixel at x %x|y %y|color %color"
     //% x.max=128 x.min=0 x.defl=0
@@ -112,7 +112,7 @@ namespace OD01 {
     }
 
     /**
-     * show text in OLED
+     * show text at a specific location on screen
      */
     //% blockId="OLED12864_I2C_SHOWSTRING" block="show string %s|at col %col|row %row|color %color"
     //% s.defl='Hello'
@@ -128,7 +128,7 @@ namespace OD01 {
     }
 
     /**
-     * show a number in OLED
+     * show a number at a specific location on screen
      */
     //% blockId="OLED12864_I2C_NUMBER" block="show Number %num|at col %col|row %row|color %color"
     //% num.defl=100
@@ -152,7 +152,7 @@ namespace OD01 {
     }
 
     /**
-     * print a text in OLED
+     * print text to screen
      */
     //% block="print %s|color %color|newline %newline"
     //% s.defl="string"
@@ -173,7 +173,7 @@ namespace OD01 {
     }
 
     /**
-     * print a Number in OLED
+     * print a number to screen 
      */
     //% block="print number %num|color %color|newline %newline"
     //% s.defl="0"
@@ -268,7 +268,7 @@ namespace OD01 {
     }
 
     /**
-     * turn on/off screen
+     * turn the display on / off
      */
     //% blockId="OLED12864_I2C_ON" block="Display %on"
     //% on.defl=1
@@ -279,7 +279,7 @@ namespace OD01 {
     }
 
     /**
-     * OLED initialize
+     * insert in your On Start block to power up the display
      */
     //% blockId="OLED12864_I2C_init" block="initialize OLED"
     //% weight=99 blockGap=8
