@@ -279,7 +279,7 @@ namespace OD01 {
     }
 
     /**
-     * insert in your On Start block to power up the display
+     * power up the OD01 
      */
     //% blockId="OLED12864_I2C_init" block="initialize OLED"
     //% weight=99 blockGap=8
