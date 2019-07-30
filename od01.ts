@@ -82,7 +82,7 @@ namespace OD01 {
     //% x.max=128 x.min=0 x.defl=0
     //% y.max=64 y.min=0 y.defl=0
     //% color.max=1 color.min=0 color.defl=1
-    //% weight=65 blockGap=8
+    //% weight=30 blockGap=8
     export function pixel(x: number, y: number, color: number = 1) {
         let page = y >> 3
         let shift_page = y % 8
@@ -119,7 +119,7 @@ namespace OD01 {
     //% col.max=120 col.min=0 col.defl=0
     //% row.max=7 row.min=0 row.defl=0
     //% color.max=1 color.min=0 color.defl=1
-    //% weight=80 blockGap=8 inlineInputMode=inline
+    //% weight=50 blockGap=8 inlineInputMode=inline
     export function String(s: string, col: number, row: number, color: number = 1) {
         for (let n = 0; n < s.length; n++) {
             char(s.charAt(n), col, row, color)
@@ -135,7 +135,7 @@ namespace OD01 {
     //% col.max=120 col.min=0 col.defl=0
     //% row.max=7 row.min=0 row.defl=0
     //% color.max=1 color.min=0 color.defl=1
-    //% weight=80 blockGap=8 inlineInputMode=inline
+    //% weight=45 blockGap=8 inlineInputMode=inline
     export function Number(num: number, col: number, row: number, color: number = 1) {
         String(num.toString(), col, row, color)
     }
@@ -192,7 +192,7 @@ namespace OD01 {
     //% y.max=63 y.min=0 y.defl=0
     //% len.max=128 len.min=1 len.defl=16
     //% color.max=1 color.min=0 color.defl=1
-    //% weight=71 blockGap=8 inlineInputMode=inline
+    //% weight=30 blockGap=8 inlineInputMode=inline
     export function hline(x: number, y: number, len: number, color: number = 1) {
         let _sav = _DRAW
         if ((y < MIN_Y) || (y > MAX_Y)) return
@@ -212,7 +212,7 @@ namespace OD01 {
     //% y.max=63 y.min=0 y.defl=0
     //% len.max=128 len.min=1 len.defl=16
     //% color.max=1 color.min=0 color.defl=1
-    //% weight=71 blockGap=8 inlineInputMode=inline
+    //% weight=25 blockGap=8 inlineInputMode=inline
     export function vline(x: number, y: number, len: number, color: number = 1) {
         let _sav = _DRAW
         _DRAW = 0
@@ -229,7 +229,7 @@ namespace OD01 {
      */
     //% blockId="OLED12864_I2C_RECT" block="draw a rectangle at x1 %x1|y1 %y1|x2 %x2|y2 %y2|color %color"
     //% color.defl=1
-    //% weight=70 blockGap=8 inlineInputMode=inline
+    //% weight=20 blockGap=8 inlineInputMode=inline
     export function rect(x1: number, y1: number, x2: number, y2: number, color: number = 1) {
         if (x1 > x2)
             x1 = [x2, x2 = x1][0];
