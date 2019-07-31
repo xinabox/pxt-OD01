@@ -76,13 +76,13 @@ namespace OD01 {
     }
 
     /**
-     * set pixel in OLED
+     * set a single pixel to be on (color = 1) or off (color = 0)
      */
     //% blockId="OLED12864_I2C_PIXEL" block="set pixel at x %x|y %y|color %color"
     //% x.max=128 x.min=0 x.defl=0
     //% y.max=64 y.min=0 y.defl=0
     //% color.max=1 color.min=0 color.defl=1
-    //% weight=65 blockGap=8
+    //% weight=30 blockGap=8
     export function pixel(x: number, y: number, color: number = 1) {
         let page = y >> 3
         let shift_page = y % 8
@@ -112,14 +112,14 @@ namespace OD01 {
     }
 
     /**
-     * show text in OLED
+     * show text at a specific location on screen
      */
     //% blockId="OLED12864_I2C_SHOWSTRING" block="show string %s|at col %col|row %row|color %color"
     //% s.defl='Hello'
     //% col.max=120 col.min=0 col.defl=0
     //% row.max=7 row.min=0 row.defl=0
     //% color.max=1 color.min=0 color.defl=1
-    //% weight=80 blockGap=8 inlineInputMode=inline
+    //% weight=50 blockGap=8 inlineInputMode=inline
     export function String(s: string, col: number, row: number, color: number = 1) {
         for (let n = 0; n < s.length; n++) {
             char(s.charAt(n), col, row, color)
@@ -128,14 +128,14 @@ namespace OD01 {
     }
 
     /**
-     * show a number in OLED
+     * show a number at a specific location on screen
      */
     //% blockId="OLED12864_I2C_NUMBER" block="show Number %num|at col %col|row %row|color %color"
     //% num.defl=100
     //% col.max=120 col.min=0 col.defl=0
     //% row.max=7 row.min=0 row.defl=0
     //% color.max=1 color.min=0 color.defl=1
-    //% weight=80 blockGap=8 inlineInputMode=inline
+    //% weight=45 blockGap=8 inlineInputMode=inline
     export function Number(num: number, col: number, row: number, color: number = 1) {
         String(num.toString(), col, row, color)
     }
@@ -152,13 +152,13 @@ namespace OD01 {
     }
 
     /**
-     * print a text in OLED
+     * print text to screen
      */
     //% block="print %s|color %color|newline %newline"
     //% s.defl="string"
     //% color.max=1 color.min=0 color.defl=1
     //% newline.defl=true
-    //% weight=80 blockGap=8 inlineInputMode=inline
+    //% weight=88 blockGap=8 inlineInputMode=inline
     export function printString(s: string, color: number, newline: boolean = true) {
         for (let n = 0; n < s.length; n++) {
             char(s.charAt(n), _cx, _cy, color)
@@ -173,13 +173,13 @@ namespace OD01 {
     }
 
     /**
-     * print a Number in OLED
+     * print a number to screen 
      */
     //% block="print number %num|color %color|newline %newline"
     //% s.defl="0"
     //% color.max=1 color.min=0 color.defl=1
     //% newline.defl=true
-    //% weight=80 blockGap=8 inlineInputMode=inline
+    //% weight=86 blockGap=8 inlineInputMode=inline
     export function printNumber(num: number, color: number, newline: boolean = true) {
         printString(num.toString(), color, newline)
     }
@@ -192,7 +192,7 @@ namespace OD01 {
     //% y.max=63 y.min=0 y.defl=0
     //% len.max=128 len.min=1 len.defl=16
     //% color.max=1 color.min=0 color.defl=1
-    //% weight=71 blockGap=8 inlineInputMode=inline
+    //% weight=30 blockGap=8 inlineInputMode=inline
     export function hline(x: number, y: number, len: number, color: number = 1) {
         let _sav = _DRAW
         if ((y < MIN_Y) || (y > MAX_Y)) return
@@ -212,7 +212,7 @@ namespace OD01 {
     //% y.max=63 y.min=0 y.defl=0
     //% len.max=128 len.min=1 len.defl=16
     //% color.max=1 color.min=0 color.defl=1
-    //% weight=71 blockGap=8 inlineInputMode=inline
+    //% weight=25 blockGap=8 inlineInputMode=inline
     export function vline(x: number, y: number, len: number, color: number = 1) {
         let _sav = _DRAW
         _DRAW = 0
@@ -229,7 +229,7 @@ namespace OD01 {
      */
     //% blockId="OLED12864_I2C_RECT" block="draw a rectangle at x1 %x1|y1 %y1|x2 %x2|y2 %y2|color %color"
     //% color.defl=1
-    //% weight=70 blockGap=8 inlineInputMode=inline
+    //% weight=20 blockGap=8 inlineInputMode=inline
     export function rect(x1: number, y1: number, x2: number, y2: number, color: number = 1) {
         if (x1 > x2)
             x1 = [x2, x2 = x1][0];
@@ -259,7 +259,7 @@ namespace OD01 {
      * clear screen
      */
     //% blockId="OLED12864_I2C_CLEAR" block="Clear screen"
-    //% weight=30 blockGap=8
+    //% weight=85 blockGap=8
     export function clear() {
         _cx = _cy = 0
         _screen.fill(0)
@@ -268,21 +268,21 @@ namespace OD01 {
     }
 
     /**
-     * turn on/off screen
+     * turn the display on / off
      */
     //% blockId="OLED12864_I2C_ON" block="Display %on"
     //% on.defl=1
-    //% weight=62 blockGap=8
+    //% weight=90 blockGap=8
     export function display(on: OD01.DISPLAY_ONOFF) {
         let d = (on == OD01.DISPLAY_ONOFF.DISPLAY_ON) ? 0xAF : 0xAE;
         cmd1(d)
     }
 
     /**
-     * OLED initialize
+     * power up the OD01 
      */
-    //% blockId="OLED12864_I2C_init" block="Initial OLED"
-    //% weight=10 blockGap=8
+    //% blockId="OLED12864_I2C_init" block="initialize OLED"
+    //% weight=99 blockGap=8
     export function init() {
         cmd1(0xAE)       // SSD1306_DISPLAYOFF
         cmd1(0xA4)       // SSD1306_DISPLAYALLON_RESUME
