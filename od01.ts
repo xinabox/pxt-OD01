@@ -151,6 +151,26 @@ namespace OD01 {
         }
     }
 
+        /**
+     * print text to screen - PM01
+     */
+    //% block="print %s|newline %newline"
+    //% s.defl="string"
+    //% newline.defl=true
+    //% weight=88 blockGap=8 inlineInputMode=inline
+    export function printStringPM(s: string, newline: boolean = true) {
+        for (let n = 0; n < s.length; n++) {
+            char(s.charAt(n), _cx, _cy, 1)
+            _cx += 6
+            if (_cx > 120) {
+                scroll()
+            }
+        }
+        if (newline) {
+            scroll()
+        }
+    }
+    
     /**
      * print text to screen
      */
