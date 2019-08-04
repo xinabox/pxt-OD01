@@ -179,7 +179,7 @@ namespace OD01 {
     //% newline.defl=true
     //% weight=86 blockGap=8 inlineInputMode=inline
     export function printNumber(num: number, newline: boolean = true) {
-        printString(num.toString(), 1, newline)
+        printString(num.toString(), newline)
     }
 
     /**
