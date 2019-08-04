@@ -158,7 +158,7 @@ namespace OD01 {
     //% s.defl="string"
     //% newline.defl=true
     //% weight=88 blockGap=8 inlineInputMode=inline
-    export function printStringPM(s: string, newline: boolean = true) {
+    export function printString(s: string, newline: boolean = true) {
         for (let n = 0; n < s.length; n++) {
             char(s.charAt(n), _cx, _cy, 1)
             _cx += 6
