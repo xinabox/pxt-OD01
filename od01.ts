@@ -151,17 +151,16 @@ namespace OD01 {
         }
     }
 
-    /**
+        /**
      * print text to screen
      */
-    //% block="print %s|color %color|newline %newline"
+    //% block="print %s|newline %newline"
     //% s.defl="string"
-    //% color.max=1 color.min=0 color.defl=1
     //% newline.defl=true
     //% weight=88 blockGap=8 inlineInputMode=inline
-    export function printString(s: string, color: number, newline: boolean = true) {
+    export function printString(s: string, newline: boolean = true) {
         for (let n = 0; n < s.length; n++) {
-            char(s.charAt(n), _cx, _cy, color)
+            char(s.charAt(n), _cx, _cy, 1)
             _cx += 6
             if (_cx > 120) {
                 scroll()
@@ -172,16 +171,15 @@ namespace OD01 {
         }
     }
 
-    /**
+     /**
      * print a number to screen 
      */
-    //% block="print number %num|color %color|newline %newline"
+    //% block="print number %num|newline %newline"
     //% s.defl="0"
-    //% color.max=1 color.min=0 color.defl=1
     //% newline.defl=true
     //% weight=86 blockGap=8 inlineInputMode=inline
-    export function printNumber(num: number, color: number, newline: boolean = true) {
-        printString(num.toString(), color, newline)
+    export function printNumber(num: number, newline: boolean = true) {
+        printString(num.toString(), newline)
     }
 
     /**
