@@ -130,7 +130,7 @@ namespace OD01 {
     /**
      * show a number at a specific location on screen
      */
-    //% blockId="OLED12864_I2C_NUMBER" block="show Number %num|at col %col|row %row|color %color"
+    //% blockId="OLED12864_I2C_NUMBER" block="show number %num|at col %col|row %row|color %color"
     //% num.defl=100
     //% col.max=120 col.min=0 col.defl=0
     //% row.max=7 row.min=0 row.defl=0
@@ -246,7 +246,7 @@ namespace OD01 {
      * invert display
      * @param d true: invert / false: normal, eg: true
      */
-    //% blockId="OLED12864_I2C_INVERT" block="Invert display %d"
+    //% blockId="OLED12864_I2C_INVERT" block="invert display %d"
     //% weight=62 blockGap=8
     export function invert(d: boolean = true) {
         let n = (d) ? 0xA7 : 0xA6
@@ -256,7 +256,7 @@ namespace OD01 {
     /**
      * clear screen
      */
-    //% blockId="OLED12864_I2C_CLEAR" block="Clear screen"
+    //% blockId="OLED12864_I2C_CLEAR" block="clear screen"
     //% weight=85 blockGap=8
     export function clear() {
         _cx = _cy = 0
@@ -268,7 +268,7 @@ namespace OD01 {
     /**
      * turn the display on / off
      */
-    //% blockId="OLED12864_I2C_ON" block="Display %on"
+    //% blockId="OLED12864_I2C_ON" block="display %on"
     //% on.defl=1
     //% weight=90 blockGap=8
     export function display(on: OD01.DISPLAY_ONOFF) {
