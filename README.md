@@ -38,11 +38,14 @@ A comprehensive set of How-to guides that show you how to use the blocks is avai
 ## Core functions: Print string / number on same line / new line:
 
 ```blocks
-// Show the temperature in Celcius on the micro:bit 5x5 LED matrix:
-basic.showNumber(SW01.temperature(BME280_T.T_C))
+// Print "Number = " then "42" on the NEXT line::
+OD01.printString("Number = ", true)
+OD01.printNumber(42, true)
 
-// Show the temperature in Celcius on the micro:bit 5x5 LED matrix:
-basic.showNumber(SW01.temperature(BME280_T.T_F))
+// Print "Number = " then "42" on the SAME line::
+OD01.printString("Number = ", false)
+OD01.printNumber(42, true)
+
 
 ```
 
