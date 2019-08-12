@@ -85,8 +85,11 @@ OD01.Number(446, 88, 4, 0)
 ```
 
 You would use showString / showString instead of printString / printString when you have a fixed screen layout, such as in a game.
+
 With the print functions it is hard to control where text or numbers are shown on screen.
+
 The Show functions allow you specify exactly where something is shown.
+
 If you wanted to show the score of a game in the top right of the screen you would use showNumber
 
 ```blocks
