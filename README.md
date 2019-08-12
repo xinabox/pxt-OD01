@@ -11,8 +11,8 @@ The following functions are provided (with examples later):
 * display ON / OFF.  It is ON by default
 
 NB: you do NOT need to initialise or turn on the OLED before using it - both are done when the micro:bit powers up the circuit.
-* print String. Write anything to screen, and specify whether the start the NEXT print on a new line.
-* print number. Write a number to screen, and specify whether the start the NEXT print on a new line.
+* print String. Write anything to screen, and specify whether to start the NEXT print on a new line.
+* print number. Write a number to screen, and specify whether to start the NEXT print on a new line.
 * clear screen. 
 * invert screen TRUE / FALSE. Setting this to TRUE causes all pixels to change from on to off, or off to on.
 
