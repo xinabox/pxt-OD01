@@ -10,7 +10,7 @@ The following functions are provided (with examples later):
 * initialise OLED. This is triggered by default and you don't need to use this normally.
 * display ON / OFF.  It is ON by default
 
-NB: you do NOT not to initialise or turn on the OLED before using it - both are done for us.
+NB: you do NOT need to initialise or turn on the OLED before using it - both are done when the micro:bit powers up the circuit.
 * print String. Write anything to screen, and specify whether the start the NEXT print on a new line.
 * print number. Write a number to screen, and specify whether the start the NEXT print on a new line.
 * clear screen. 
@@ -50,8 +50,16 @@ OD01.printNumber(42, true)
 OD01.printString("Number = ", false)
 OD01.printNumber(42, true)
 
+```
+
+```blocks
+
 // And of course, when you want to start again just use clear screen:
 OD01.clear()
+
+```
+
+```blocks
 
 // Or even go for a strobe effect with the screen invert function (but don't try this if that sort of thing bothers you):
 basic.forever(function () {
@@ -73,6 +81,10 @@ OD01.Number(446, 88, 4, 1)
 // Print "Calling " then "446" in the same place but inverted (use for emphasis like bold):
 OD01.String("Calling", 42, 4, 0)
 OD01.Number(446, 88, 4, 0)
+
+```
+
+```blocks
 
 // Now put these together to create a cool flashing effect:
 basic.forever(function () {
