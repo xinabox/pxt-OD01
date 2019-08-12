@@ -16,24 +16,27 @@ NB: you do NOT not to initialise or turn on the OLED before using it - both are 
 * clear screen. 
 * invert screen TRUE / FALSE. Setting this to TRUE causes all pixels to change from on to off, or off to on.
 
-These are your main printing tools. They are easy to use and are more than adequate to output data to screen.
-But there is a lot more you can do - the following functions are for drawing. In each case you specify a Color (soz UK for spelling). Color = 1 means the image is drawn and Color = 0 means the image is erased. 
-
-Use the functions below to draw the items named on the OLED in a location you specify:
+These are your main printing tools, but you can also use these functions to put text and numbers on screen:
 * show string
 * show number
+
+The 2 functions allow you to specify the location where the text / number is printed. 
+In addition, you can use a Color parameter to write the text / number differently
+
+There are also several functions that allow you to draw items on to the screen at a location you specify:
 * set pixel
 * draw horizontal line
 * draw vertical line
 * draw rectangle
+In each case you also specify a Color (soz UK for spelling). Color = 1 means the image is drawn and Color = 0 means the image is erased. 
 
 This extension is based on [the OLED Package from microbit/micropython Chinese community](https://github.com/makecode-extensions/OLED12864_I2C). Great thanks to Shaoziyang for all the heavy lifting.
  
 
 ## How-to guides
 
-A comprehensive set of How-to guides that show you how to use the blocks is available online:
-* Search for OD01 on the [XinaBox website](https://xinabox.cc/)
+A comprehensive set of How-to guides that show you how to use the blocks and provides simple examples of the code is available online:
+[XinaBox How-to Guides for OD01 on BBC micro:bit using MakeCode](https://drive.google.com/open?id=1_LvtXnSPReET5C7jfOD7VrZdRPcyU_uF)
 
 
 ## Basic Printing: Print string / number on same line / new line:
