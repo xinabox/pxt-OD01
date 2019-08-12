@@ -1,6 +1,8 @@
 # XinaBox OD01 MakeCode extension
 
-The OD01 is 64x128 dot matrix monochrome OLED screen which has an SSD1306 mounted on to it. 
+The OD01 is 64x128 dot matrix monochrome OLED screen which has an SSD1306 mounted on to it. Use it with a micro:bit to expand your output options:
+ 
+![](od01.jpg)
 
 This library provides functions to print and draw to the OD01 OLED display. 
 
@@ -26,8 +28,7 @@ Use the functions below to draw the items named on the OLED in a location you sp
 * draw rectangle
 
 This extension is based on [the OLED Package from microbit/micropython Chinese community](https://github.com/makecode-extensions/OLED12864_I2C). Great thanks to Shaoziyang for all the heavy lifting.
-  
-![](od01.jpg)
+ 
 
 ## How-to guides
 
@@ -35,19 +36,55 @@ A comprehensive set of How-to guides that show you how to use the blocks is avai
 * Search for OD01 on the [XinaBox website](https://xinabox.cc/)
 
 
-## Core functions: Print string / number on same line / new line:
+## Basic Printing: Print string / number on same line / new line:
 
 ```blocks
-// Print "Number = " then "42" on the NEXT line::
+// Print "Number = " then "42" on the NEXT line:
 OD01.printString("Number = ", true)
 OD01.printNumber(42, true)
 
-// Print "Number = " then "42" on the SAME line::
+// Print "Number = " then "42" on the SAME line:
 OD01.printString("Number = ", false)
 OD01.printNumber(42, true)
 
+// And of course, when you want to start again just use clear screen:
+OD01.clear()
+
+// Or even go for a strobe effect with the screen invert function (but don't try this if that sort of thing bothers you):
+basic.forever(function () {
+    OD01.invert(true)
+    basic.pause(200)
+    OD01.invert(false)
+    basic.pause(200)
+})
 
 ```
+
+## Basic Drawing: Flashing a string / number:
+
+```blocks
+// Print "Number = " then "42" in the location specified (column = 42, row = 4, color = 1):
+OD01.String("Calling", 42, 4, 1)
+OD01.Number(446, 88, 4, 1)
+
+// Print "Calling " then "446" in the same place but inverted (use for emphasis like bold):
+OD01.String("Calling", 42, 4, 0)
+OD01.Number(446, 88, 4, 0)
+
+// Now put these together to create a cool flashing effect:
+basic.forever(function () {
+    OD01.String("Calling", 42, 4, 1)
+    OD01.Number(446, 88, 4, 1)
+    basic.pause(500)
+    OD01.String("Calling", 42, 4, 0)
+    OD01.Number(446, 88, 4, 0)
+    basic.pause(500)
+})
+
+```
+
+There are loads of other drawing functions. Check out our How-to Guides online to learn how to use them all, and in the process learn how to make a pixel bounce around the screen and how to control a rectangle with the A and B buttons.
+
 
 ## License
 
