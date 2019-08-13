@@ -1,5 +1,5 @@
 basic.forever(function () {
-    OD01.display(OD01.DISPLAY_ONOFF.DISPLAY_ON)
+    
     OD01.printString("1print1", false)
     OD01.printString("2print2", true)
     OD01.printNumber(33, false)
