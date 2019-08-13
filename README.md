@@ -113,7 +113,7 @@ Bear in mind that you cannot use clear screen to remove text or numbers added us
 
 And setting color = 0 shows the inverse, rather than removing it from screen.
 
-To remove text of numbers added using the Show methods use the following technique:
+To remove text or numbers added using the Show methods use the following technique:
 
 ```blocks
 
