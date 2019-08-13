@@ -28,6 +28,7 @@ There are also several functions that allow you to draw items on to the screen a
 * draw horizontal line
 * draw vertical line
 * draw rectangle
+
 In each case you also specify a Color (soz UK for spelling). Color = 1 means the image is drawn and Color = 0 means the image is erased. 
 
 This extension is based on [the OLED Package from microbit/micropython Chinese community](https://github.com/makecode-extensions/OLED12864_I2C). Great thanks to Shaoziyang for all the heavy lifting.
