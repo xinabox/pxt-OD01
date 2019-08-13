@@ -97,7 +97,7 @@ If you wanted to show the score of a game in the top right of the screen you wou
 
 ```blocks
 
-// Now put these together to create a cool flashing effect:
+// Now put these together to create a cool blinking effect:
 basic.forever(function () {
     OD01.String("Calling", 42, 4, 1)
     OD01.Number(446, 88, 4, 1)
