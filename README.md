@@ -57,12 +57,14 @@ OD01.printNumber(42, true)
 
 // And of course, when you want to start again just use clear screen:
 OD01.clear()
+// Note that the clear screen function will ONLY clear stuff written to screen using the print functions.
+// Anything that has been drawn using other functions will NOT be removed when clear screen is used.
 
 ```
 
 ```blocks
 
-// Or even go for a strobe effect with the screen invert function (Warning - flashing light):
+// Use screen invert for a cool strobe effect (Warning - flashing light):
 basic.forever(function () {
     OD01.invert(true)
     basic.pause(200)
@@ -104,6 +106,20 @@ basic.forever(function () {
     OD01.Number(446, 88, 4, 0)
     basic.pause(500)
 })
+
+```
+
+Bear in mind that you cannot use clear screen to remove text or numbers added using the Show methods.
+
+And setting color = 0 shows the inverse, rather than removing it from screen.
+
+To remove text of numbers added using the Show methods use the following technique:
+
+```blocks
+
+// Print an empty string to the location you want to remove text / numbers from:
+OD01.String("Calling", 42, 4, 1)
+OD01.String("       ", 42, 4, 1)
 
 ```
 
