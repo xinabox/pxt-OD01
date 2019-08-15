@@ -1,7 +1,7 @@
 {
     "name": "OD01",
     "version": "1.0.0",
-    "description": "XinaBox OD01 OLED display. A 64x128 pixel screen for the micro:bit.",
+    "description": "XinaBox OD01 OLED display. A 64x128 pixel screen for micro:bit.",
     "license": "MIT",
     "dependencies": {
         "core": "*"
