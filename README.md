@@ -8,7 +8,7 @@ Use it with a micro:bit to show large amounts of data on screen at the same time
 This library provides functions to print and draw to the OD01 OLED display. 
 
 The following Standard Printing functions are provided (with examples later):
-* print String. Write anything to screen, and specify whether to start the NEXT print on a new line.
+* print string. Write anything to screen, and specify whether to start the NEXT print on a new line.
 * print number. Write a number to screen, and specify whether to start the NEXT print on a new line.
 * clear screen. 
 * invert screen TRUE / FALSE. Setting this to TRUE causes all pixels to change from on to off, or off to on.
