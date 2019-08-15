@@ -5,6 +5,8 @@ Use it with a micro:bit to show large amounts of data on screen at the same time
  
 ![](od01.jpg)
 
+[Read more about it or purchase one here](https://xinabox.cc/products/od01)
+
 This library provides functions to print and draw to the OD01 OLED display. 
 
 The following Standard Printing functions are provided (with examples later):
