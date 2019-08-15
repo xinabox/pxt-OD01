@@ -114,7 +114,7 @@ namespace OD01 {
     }
 
     /**
-     * show text at a specific location on screen
+     * show text at a specific location on screen. Note - to remove the text print an empty string ("  ") to the same location.
      */
     //% blockId="OLED12864_I2C_SHOWSTRING" block="show string %s|at col %col|row %row|color %color"
     //% s.defl='Hello'
@@ -131,7 +131,7 @@ namespace OD01 {
     }
 
     /**
-     * show a number at a specific location on screen
+     * show a number at a specific location on screen. Note - to remove the number print an empty string ("  ") to the same location.
      */
     //% blockId="OLED12864_I2C_NUMBER" block="show number %num|at col %col|row %row|color %color"
     //% num.defl=100
@@ -189,7 +189,7 @@ namespace OD01 {
     }
 
     /**
-     * draw a horizontal line
+     * draw a horizontal line. Use color = 1 to draw the line and color = 0 to erase it.
      */
     //% blockId="OLED12864_I2C_HLINE" block="draw a horizontal line at x %x|y %y|length %len|color %color"
     //% x.max=127 x.min=0 x.defl=0
@@ -210,7 +210,7 @@ namespace OD01 {
     }
 
     /**
-     * draw a vertical line
+     * draw a vertical line. Use color = 1 to draw the line and color = 0 to erase it.
      */
     //% blockId="OLED12864_I2C_VLINE" block="draw a vertical line at x %x|y %y|length %len|color %color"
     //% x.max=127 x.min=0 x.defl=0
@@ -231,7 +231,7 @@ namespace OD01 {
     }
 
     /**
-     * draw a rectangle
+     * draw a rectangle. Use color = 1 to draw the rectangle and color = 0 to erase it.
      */
     //% blockId="OLED12864_I2C_RECT" block="draw a rectangle at x1 %x1|y1 %y1|x2 %x2|y2 %y2|color %color"
     //% color.defl=1
@@ -277,7 +277,7 @@ namespace OD01 {
     }
 
     /**
-     * turn the display on / off
+     * turn the display on / off. Display is ON by default.
      */
     //% blockId="OLED12864_I2C_ON" block="display %on"
     //% on.defl=1
@@ -289,7 +289,7 @@ namespace OD01 {
     }
 
     /**
-     * power up the OD01 
+     * power up the OD01. OD01 is initialised by default on startup. 
      */
     //% blockId="OLED12864_I2C_init" block="initialize OLED"
     //% weight=5 blockGap=8
