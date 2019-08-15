@@ -1,29 +1,26 @@
 # XinaBox OD01 MakeCode extension
 
-The OD01 is 64x128 dot matrix monochrome OLED screen which has an SSD1306 mounted on to it. Use it with a micro:bit to expand your output options:
+The OD01 is 64x128 dot matrix monochrome OLED screen which has an SSD1306 mounted on to it. 
+Use it with a micro:bit to show large amounts of data on screen at the same time.
  
 ![](od01.jpg)
 
 This library provides functions to print and draw to the OD01 OLED display. 
 
-The following functions are provided (with examples later):
-* initialise OLED. This is triggered by default and you don't need to use this normally.
-* display ON / OFF.  It is ON by default
-
-NB: you do NOT need to initialise or turn on the OLED before using it - both are done when the micro:bit powers up the circuit.
+The following Standard Printing functions are provided (with examples later):
 * print String. Write anything to screen, and specify whether to start the NEXT print on a new line.
 * print number. Write a number to screen, and specify whether to start the NEXT print on a new line.
 * clear screen. 
 * invert screen TRUE / FALSE. Setting this to TRUE causes all pixels to change from on to off, or off to on.
 
-These are your main printing tools, but you can also use these functions to put text and numbers on screen:
+These are your main printing tools, but you can also use the "Print anywhere on screen" functions to put text and numbers on screen:
 * show string
 * show number
 
 The 2 functions allow you to specify the location where the text / number is printed. 
 In addition, you can use a Color parameter to write the text / number differently
 
-There are also several functions that allow you to draw items on to the screen at a location you specify:
+There are also several "Drawing" functions that allow you to draw items on to the screen at a location you specify:
 * set pixel
 * draw horizontal line
 * draw vertical line
@@ -31,8 +28,12 @@ There are also several functions that allow you to draw items on to the screen a
 
 In each case you also specify a Color (soz UK for spelling). Color = 1 means the image is drawn and Color = 0 means the image is erased. 
 
-This extension is based on [the OLED Package from microbit/micropython Chinese community](https://github.com/makecode-extensions/OLED12864_I2C). Great thanks to Shaoziyang for all the heavy lifting.
- 
+There are also "SW01 Control" functions to control the SW01:
+* initialise OLED. This is triggered by default and you don't need to use this normally.
+* display ON / OFF.  It is ON by default
+
+NB: you do NOT need to initialise or turn on the OLED before using it - both are done when the micro:bit powers up the circuit. You might use them in advanced circumstances, e.g. power the SW01 off to preserve battery power, or initialise the OD01 if an error state has been recorded.
+
 
 ## How-to guides
 
@@ -123,8 +124,13 @@ OD01.String("       ", 42, 4, 1)
 
 ```
 
-There are loads of other drawing functions. Check out our How-to Guides online to learn how to use them all, and in the process learn how to make a pixel bounce around the screen and how to control a rectangle with the A and B buttons.
+Check out our [How-to Guides online](https://drive.google.com/open?id=1_LvtXnSPReET5C7jfOD7VrZdRPcyU_uF) to learn how to use the draw functions and in the process learn how to make a pixel bounce around the screen and how to control a rectangle with the A and B buttons.
 
+## Attribution
+
+This extension is based on [the OLED Package from microbit/micropython Chinese community](https://github.com/makecode-extensions/OLED12864_I2C). 
+
+Great thanks to Shaoziyang for all the heavy lifting :)
 
 ## License
 
