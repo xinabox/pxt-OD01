@@ -291,7 +291,7 @@ namespace OD01 {
     /**
      * power up the OD01. OD01 is initialised by default on startup. 
      */
-    //% blockId="OLED12864_I2C_init" block="initialize OD01"
+    //% blockId="OLED12864_I2C_init" block="start OD01"
     //% weight=5 blockGap=8
     //% group="On start"
     export function init() {
