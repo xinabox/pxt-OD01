@@ -10,11 +10,11 @@ const Font_5x7 = hex`000000000000005F00000007000700147F147F14242A072A12231308646
 //% color=#444444 icon="\uf26c" block="OD01"
 //% groups='["Scrolling Display", "Positional Display", "Drawing", "Optional"]'
 namespace OD01 {
-    export enum DISPLAY_ONOFF {
+    export enum Display {
         //% block="ON"
-        DISPLAY_ON = 1,
+        On = 1,
         //% block="OFF"
-        DISPLAY_OFF = 0
+        Off = 0
     }
 
     const MIN_X = 0
@@ -123,7 +123,7 @@ namespace OD01 {
     //% color.max=1 color.min=0 color.defl=1
     //% weight=50 blockGap=8 inlineInputMode=inline
     //% group="Positional Display"
-    export function String(s: string, col: number, row: number, color: number = 1) {
+    export function showString(s: string, col: number, row: number, color: number = 1) {
         for (let n = 0; n < s.length; n++) {
             char(s.charAt(n), col, row, color)
             col += 6
@@ -140,7 +140,7 @@ namespace OD01 {
     //% color.max=1 color.min=0 color.defl=1
     //% weight=45 blockGap=8 inlineInputMode=inline
     //% group="Positional Display"
-    export function Number(num: number, col: number, row: number, color: number = 1) {
+    export function showNumber(num: number, col: number, row: number, color: number = 1) {
         String(num.toString(), col, row, color)
     }
 
@@ -198,7 +198,7 @@ namespace OD01 {
     //% color.max=1 color.min=0 color.defl=1
     //% weight=30 blockGap=8 inlineInputMode=inline
     //% group="Drawing"
-    export function hline(x: number, y: number, len: number, color: number = 1) {
+    export function horizontalLine(x: number, y: number, len: number, color: number = 1) {
         let _sav = _DRAW
         if ((y < MIN_Y) || (y > MAX_Y)) return
         _DRAW = 0
@@ -219,7 +219,7 @@ namespace OD01 {
     //% color.max=1 color.min=0 color.defl=1
     //% weight=25 blockGap=8 inlineInputMode=inline
     //% group="Drawing"
-    export function vline(x: number, y: number, len: number, color: number = 1) {
+    export function verticalLine(x: number, y: number, len: number, color: number = 1) {
         let _sav = _DRAW
         _DRAW = 0
         if ((x < MIN_X) || (x > MAX_X)) return
@@ -237,16 +237,16 @@ namespace OD01 {
     //% color.defl=1
     //% weight=20 blockGap=8 inlineInputMode=inline
     //% group="Drawing"
-    export function rect(x1: number, y1: number, x2: number, y2: number, color: number = 1) {
+    export function rectangle(x1: number, y1: number, x2: number, y2: number, color: number = 1) {
         if (x1 > x2)
             x1 = [x2, x2 = x1][0];
         if (y1 > y2)
             y1 = [y2, y2 = y1][0];
         _DRAW = 0
-        hline(x1, y1, x2 - x1 + 1, color)
-        hline(x1, y2, x2 - x1 + 1, color)
-        vline(x1, y1, y2 - y1 + 1, color)
-        vline(x2, y1, y2 - y1 + 1, color)
+        horizontalLine(x1, y1, x2 - x1 + 1, color)
+        horizontalLine(x1, y2, x2 - x1 + 1, color)
+        verticalLine(x1, y1, y2 - y1 + 1, color)
+        verticalLine(x2, y1, y2 - y1 + 1, color)
         _DRAW = 1
         draw(1)
     }
@@ -283,9 +283,12 @@ namespace OD01 {
     //% on.defl=1
     //% weight=10 blockGap=8
     //% group="Optional"
-    export function display(on: OD01.DISPLAY_ONOFF) {
-        let d = (on == OD01.DISPLAY_ONOFF.DISPLAY_ON) ? 0xAF : 0xAE;
-        cmd1(d)
+    //% on.shadow="toggleOnOff"
+    export function display(on: boolean) {
+        if (on) 
+            cmd1(0xAF);
+        else
+            cmd1(0xAE);
     }
 
     /**
