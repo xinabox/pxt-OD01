@@ -141,7 +141,7 @@ namespace OD01 {
     //% weight=45 blockGap=8 inlineInputMode=inline
     //% group="Positional Display"
     export function showNumber(num: number, col: number, row: number, color: number = 1) {
-        String(num.toString(), col, row, color)
+        showString(num.toString(), col, row, color)
     }
 
     function scroll() {
