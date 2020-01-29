@@ -1,3 +1,4 @@
+/*
 basic.forever(function () {
     OD01.printString("1print1", false)
     OD01.printString("2print2", true)
@@ -27,3 +28,4 @@ basic.forever(function () {
     OD01.showString("           ", 0, 3, 1)
     basic.pause(1000)
 })
+*/
