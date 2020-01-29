@@ -4,7 +4,8 @@
     "description": "XinaBox OD01 OLED display: 128x64 pixel",
     "license": "MIT",
     "dependencies": {
-        "core": "*"
+        "core": "*",
+        "xinabox-cs11": "*"
     },
     "files": [
         "README.md",
