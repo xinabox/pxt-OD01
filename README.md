@@ -1,4 +1,3 @@
-[![Build Status](https://travis-ci.org/xinabox/pxt-OD01.svg?branch=master)](https://travis-ci.org/xinabox/pxt-OD01)
 [![GitHub Issues](https://img.shields.io/github/issues/xinabox/pxt-OD01.svg)](https://github.com/xinabox/pxt-OD01/issues) ![GitHub Commit](https://img.shields.io/github/last-commit/xinabox/pxt-OD01) ![Maintained](https://img.shields.io/maintenance/yes/2020) ![Build status badge](https://github.com/xinabox/pxt-OD01/workflows/MakeCode/badge.svg)
 
 # XinaBox OD01 MakeCode extension
