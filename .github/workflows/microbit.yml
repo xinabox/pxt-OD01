@@ -1,6 +1,9 @@
-name: MakeCode
+name: microbit
 
-on: [push]
+on:
+  push:
+  schedule:
+    - cron: '0 0 5,20 * *'
 
 jobs:
   prepare:
@@ -33,20 +36,6 @@ jobs:
         run: |
           npm install -g pxt
           pxt target microbit
-          pxt install
-          pxt build --cloud
-        env:
-          CI: true
-
-      - name: maker pxt.json          
-        uses: datamonsters/replace-action@master
-        with:
-          files: 'pxt.json'
-          replacements: 'core=xinabox-cs11,test.ts=dummy.ts'
-      - name: maker compilation
-        run: |
-          npm install -g pxt
-          pxt target maker
           pxt install
           pxt build --cloud
         env:
