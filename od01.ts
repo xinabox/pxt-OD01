@@ -28,10 +28,14 @@ namespace OD01 {
     let _buf3 = pins.createBuffer(3)
     let _buf4 = pins.createBuffer(4)
     let _buf7 = pins.createBuffer(7)
+    let _buf13 = pins.createBuffer(13)
     _buf7[0] = 0x40
+    _buf13[0] = 0x40
     let _DRAW = 1
     let _cx = 0
     let _cy = 0
+
+    let _ZOOM = 0
 
     function cmd1(d: number) {
         let n = d % 256;
@@ -76,6 +80,13 @@ namespace OD01 {
         }
     }
 
+    //% block="OD01 enable zoom"
+    //% weight=60 blockGap=8
+    export function enableZoom() {
+        _ZOOM = 1
+       cmd2(0xd6, _ZOOM)
+    }
+
     /**
      * set a single pixel to be on (color = 1) or off (color = 0)
      */
@@ -102,15 +113,40 @@ namespace OD01 {
     function char(c: string, col: number, row: number, color: number = 1) {
         let p = (Math.min(127, Math.max(c.charCodeAt(0), 32)) - 32) * 5
         let ind = col + row * 128 + 1
+        let j = 0
 
         for (let i = 0; i < 5; i++) {
             _screen[ind + i] = (color > 0) ? Font_5x7[p + i] : Font_5x7[p + i] ^ 0xFF
-            _buf7[i + 1] = _screen[ind + i]
+
+
+            
+            if(_ZOOM){
+                _buf13[j + 1] = _screen[ind + i]
+                _buf13[j + 2] = _screen[ind + i]
+
+            }else{
+                _buf7[i + 1] = _screen[ind + i]
+            }
+
+            j += 2
         }
+
         _screen[ind + 5] = (color > 0) ? 0 : 0xFF
-        _buf7[6] = _screen[ind + 5]
+
+        if(_ZOOM)
+        {
+          _buf13[12] = _screen[ind + 5] 
+        }else{
+          _buf7[6] = _screen[ind + 5]
+        }
+        
         set_pos(col, row)
-        pins.i2cWriteBuffer(_I2CAddr, _buf7)
+        if(_ZOOM)
+        {
+            pins.i2cWriteBuffer(_I2CAddr, _buf13)
+        }else{
+            pins.i2cWriteBuffer(_I2CAddr, _buf7)
+        }
     }
 
     /**
@@ -126,7 +162,13 @@ namespace OD01 {
     export function showString(s: string, col: number, row: number, color: number = 1) {
         for (let n = 0; n < s.length; n++) {
             char(s.charAt(n), col, row, color)
-            col += 6
+            if(_ZOOM)
+            {
+                col += 12
+            }else{
+                col += 6
+            }
+
         }
     }
 
@@ -166,7 +208,12 @@ namespace OD01 {
     export function printString(s: string, newline: boolean = true) {
         for (let n = 0; n < s.length; n++) {
             char(s.charAt(n), _cx, _cy, 1)
-            _cx += 6
+            if(_ZOOM)
+            {
+                _cx += 12
+            }else{
+                _cx += 6
+            }
             if (_cx > 120) {
                 scroll()
             }
@@ -176,9 +223,9 @@ namespace OD01 {
         }
     }
 
-     /**
-     * print a number to screen 
-     */
+    /**
+    * print a number to screen 
+    */
     //% block="OD01 print number %num|newline %newline"
     //% s.defl="0"
     //% newline.defl=true
@@ -285,7 +332,7 @@ namespace OD01 {
     //% group="Optional"
     //% on.shadow="toggleOnOff"
     export function display(on: boolean) {
-        if (on) 
+        if (on)
             cmd1(0xAF);
         else
             cmd1(0xAE);
