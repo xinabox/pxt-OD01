@@ -36,6 +36,7 @@ namespace OD01 {
     let _cy = 0
 
     let _ZOOM = 0
+    let _DOUBLE = 0
 
     function cmd1(d: number) {
         let n = d % 256;
@@ -80,11 +81,32 @@ namespace OD01 {
         }
     }
 
-    //% block="OD01 enable zoom"
+    //% block="OD01 zoom in"
     //% weight=60 blockGap=8
-    export function enableZoom() {
+    export function zoomIn() {
         _ZOOM = 1
        cmd2(0xd6, _ZOOM)
+    }
+
+    //% block="OD01 zoom out"
+    //% weight=60 blockGap=8
+    export function zoomOut() {
+        _ZOOM = 0
+        cmd2(0xd6, _ZOOM)
+    }
+
+    //% block="OD01 set2X"
+    //% weight=60 blockGap=8
+    export function set2X()
+    {
+        _DOUBLE = 1
+    }
+
+    //% block="OD01 set1X"
+    //% weight=60 blockGap=8
+    export function set1X()
+    {
+        _DOUBLE = 0
     }
 
     /**
@@ -102,50 +124,77 @@ namespace OD01 {
         let ind = x + page * 128 + 1
         let b = (color) ? (_screen[ind] | (1 << shift_page)) : clrbit(_screen[ind], shift_page)
         _screen[ind] = b
-        if (_DRAW) {
+        /*if (_DRAW) {
             set_pos(x, page)
             _buf2[0] = 0x40
             _buf2[1] = b
             pins.i2cWriteBuffer(_I2CAddr, _buf2)
-        }
+        }*/
     }
 
     function char(c: string, col: number, row: number, color: number = 1) {
         let p = (Math.min(127, Math.max(c.charCodeAt(0), 32)) - 32) * 5
+        let m = 0
         let ind = col + row * 128 + 1
-        let j = 0
-
-        for (let i = 0; i < 5; i++) {
-            _screen[ind + i] = (color > 0) ? Font_5x7[p + i] : Font_5x7[p + i] ^ 0xFF
 
 
-            
-            if(_ZOOM){
-                _buf13[j + 1] = _screen[ind + i]
-                _buf13[j + 2] = _screen[ind + i]
+        if(_DOUBLE)
+        {
 
-            }else{
-                _buf7[i + 1] = _screen[ind + i]
+            for(let i = 0; i < 5; i++)
+            {
+                let l = 0
+                for(let j = 0; j < 8; j++)
+                {
+                    if(Font_5x7[p + i] & (1 << j))
+                    {
+                        pixel(col + m, row * 8 + l)
+                        pixel(col + m, row * 8 + l + 1)
+
+                        pixel(col + m + 1, row * 8 + l)
+                        pixel(col + m + 1, row * 8 + l + 1)
+                    }
+
+                    l += 2
+                }
+                m += 2
             }
 
-            j += 2
-        }
-
-        _screen[ind + 5] = (color > 0) ? 0 : 0xFF
-
-        if(_ZOOM)
-        {
-          _buf13[12] = _screen[ind + 5] 
         }else{
-          _buf7[6] = _screen[ind + 5]
-        }
-        
-        set_pos(col, row)
-        if(_ZOOM)
-        {
-            pins.i2cWriteBuffer(_I2CAddr, _buf13)
-        }else{
-            pins.i2cWriteBuffer(_I2CAddr, _buf7)
+
+            let j = 0
+
+            for (let i = 0; i < 5; i++) {
+                _screen[ind + i] = (color > 0) ? Font_5x7[p + i] : Font_5x7[p + i] ^ 0xFF
+                
+                if(_ZOOM){
+                    _buf13[j + 1] = _screen[ind + i]
+                    _buf13[j + 2] = _screen[ind + i]
+
+                }else{
+                    _buf7[i + 1] = _screen[ind + i]
+                }
+
+                j += 2
+            }
+
+            _screen[ind + 5] = (color > 0) ? 0 : 0xFF
+
+            if(_ZOOM)
+            {
+            _buf13[12] = _screen[ind + 5] 
+            }else{
+            _buf7[6] = _screen[ind + 5]
+            }
+            
+            set_pos(col, row)
+            if(_ZOOM)
+            {
+                pins.i2cWriteBuffer(_I2CAddr, _buf13)
+            }else{
+                pins.i2cWriteBuffer(_I2CAddr, _buf7)
+            }
+
         }
     }
 
@@ -160,14 +209,16 @@ namespace OD01 {
     //% weight=50 blockGap=8 inlineInputMode=inline
     //% group="Positional Display"
     export function showString(s: string, col: number, row: number, color: number = 1) {
+        let steps = 0
+        if(_DOUBLE)
+        {
+            steps = 12
+        }else{
+            steps = 6
+        }
         for (let n = 0; n < s.length; n++) {
             char(s.charAt(n), col, row, color)
-            if(_ZOOM)
-            {
-                col += 12
-            }else{
-                col += 6
-            }
+            col += steps
 
         }
     }
@@ -188,7 +239,13 @@ namespace OD01 {
 
     function scroll() {
         _cx = 0
-        _cy++
+
+        if(_DOUBLE)
+        {
+            _cy +=2
+        }else{
+            _cy++
+        }
         if (_cy > 7) {
             _cy = 7
             _screen.shift(128)
@@ -206,14 +263,17 @@ namespace OD01 {
     //% weight=88 blockGap=8 inlineInputMode=inline
     //% group="Scrolling Display"
     export function printString(s: string, newline: boolean = true) {
+        let steps = 0
+        if(_DOUBLE)
+        {
+            steps = 12
+        }else{
+            steps = 6
+        }
+    
         for (let n = 0; n < s.length; n++) {
             char(s.charAt(n), _cx, _cy, 1)
-            if(_ZOOM)
-            {
-                _cx += 12
-            }else{
-                _cx += 6
-            }
+            _cx += steps
             if (_cx > 120) {
                 scroll()
             }
@@ -221,6 +281,8 @@ namespace OD01 {
         if (newline) {
             scroll()
         }
+        
+        draw(1)
     }
 
     /**
