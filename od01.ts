@@ -221,6 +221,8 @@ namespace OD01 {
             col += steps
 
         }
+
+        if(_DOUBLE)draw(1)
     }
 
     /**
@@ -282,7 +284,7 @@ namespace OD01 {
             scroll()
         }
         
-        draw(1)
+        if(_DOUBLE)draw(1)
     }
 
     /**
