@@ -160,6 +160,21 @@ namespace OD01 {
                 m += 2
             }
 
+            let l = 0
+            for(let j = 0; j < 8; j++)
+            {
+                if(color == 0)
+                {
+                    pixel(col + 10, row * 8 + l)
+                    pixel(col + 10, row * 8 + l + 1)
+
+                    pixel(col + 11, row * 8 + l)
+                    pixel(col + 11, row * 8 + l + 1)
+                }
+
+                l += 2
+            }
+
         }else{
 
             let j = 0
@@ -213,6 +228,7 @@ namespace OD01 {
         if(_DOUBLE)
         {
             steps = 12
+            row *= 2
         }else{
             steps = 6
         }
