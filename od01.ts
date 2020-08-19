@@ -146,7 +146,7 @@ namespace OD01 {
                 let l = 0
                 for(let j = 0; j < 8; j++)
                 {
-                    if(Font_5x7[p + i] & (1 << j))
+                     if(color > 0 ? Font_5x7[p + i] & (1 << j) : !(Font_5x7[p + i] & (1 << j)))
                     {
                         pixel(col + m, row * 8 + l)
                         pixel(col + m, row * 8 + l + 1)
