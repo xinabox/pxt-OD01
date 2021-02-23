@@ -8,7 +8,7 @@
 The OD01 is 64x128 dot matrix monochrome OLED screen which has an SSD1306 mounted on to it. 
 Use it with a micro:bit to show large amounts of data on screen at the same time.
  
-![](od01.jpg)
+![](https://raw.githubusercontent.com/xinabox/pxt-OD01/master/od01.jpg)
 
 [Read more about it or purchase one here](https://xinabox.cc/products/od01)
 
