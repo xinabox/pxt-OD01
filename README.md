@@ -86,12 +86,12 @@ basic.forever(function () {
 
 ```blocks
 // Print "Number = " then "42" in the location specified (column = 42, row = 4, color = 1):
-OD01.String("Calling", 42, 4, 1)
-OD01.Number(446, 88, 4, 1)
+OD01.showString("Calling", 42, 4, 1)
+OD01.showNumber(446, 88, 4, 1)
 
 // Print "Calling " then "446" in the same place but inverted (use for emphasis like bold):
-OD01.String("Calling", 42, 4, 0)
-OD01.Number(446, 88, 4, 0)
+OD01.showString("Calling", 42, 4, 0)
+OD01.showNumber(446, 88, 4, 0)
 
 ```
 
@@ -107,11 +107,11 @@ If you wanted to show the score of a game in the top right of the screen you wou
 
 // Now put these together to create a cool blinking effect:
 basic.forever(function () {
-    OD01.String("Calling", 42, 4, 1)
-    OD01.Number(446, 88, 4, 1)
+    OD01.showString("Calling", 42, 4, 1)
+    OD01.showNumber(446, 88, 4, 1)
     basic.pause(500)
-    OD01.String("Calling", 42, 4, 0)
-    OD01.Number(446, 88, 4, 0)
+    OD01.showString("Calling", 42, 4, 0)
+    OD01.showNumber(446, 88, 4, 0)
     basic.pause(500)
 })
 
@@ -126,8 +126,8 @@ To remove text or numbers added using the Show methods use the following techniq
 ```blocks
 
 // Print an empty string to the location you want to remove text / numbers from:
-OD01.String("Calling", 42, 4, 1)
-OD01.String("       ", 42, 4, 1)
+OD01.showString("Calling", 42, 4, 1)
+OD01.showString("       ", 42, 4, 1)
 
 ```
 
